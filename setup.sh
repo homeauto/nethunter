@@ -8,3 +8,6 @@ git clone https://github.com/Official-Ayrton990/Quantic-Kernel-AOSP-Cepheus.git 
 
 cp ~/nethunter/build.sh ~/Quantic-Kernel-AOSP-Cepheus
 
+cd ~/Quantic-Kernel-AOSP-Cepheus
+
+chmod +x build.sh
