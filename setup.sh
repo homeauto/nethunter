@@ -1,6 +1,5 @@
 #!/bin/bash
 
-sudo apt install git
 cd ~/
 
 git clone https://github.com/homeauto/nethunter.git
