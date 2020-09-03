@@ -2,8 +2,6 @@
 
 cd ~/
 
-git clone https://github.com/homeauto/nethunter.git
-
 git clone https://github.com/homeauto/toolchains.git
 
 git clone https://github.com/Official-Ayrton990/Quantic-Kernel-AOSP-Cepheus.git -b PELT
