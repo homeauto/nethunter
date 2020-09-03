@@ -36,7 +36,7 @@ echo "-------------------"
 
 echo
 make CC=clang O=out-clang $DEFCONFIG
-make CC=clang O=out-clang $THREAD 2>&1 | tee kernel.log
+make CC=clang O=out-clang -j$THREAD 2>&1 | tee kernel.log
 #INSTALL_MOD_PATH=$zm $THREAD modules_install
 
 echo "-------------------"
