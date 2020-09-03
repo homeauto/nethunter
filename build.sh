@@ -1,13 +1,9 @@
 #!/bin/bash
-rm .version
-
-clear
-cd ~/QK-AOSP-Cepheus/
+cd ~/Quantic-Kernel-AOSP-Cepheus/ #change this to fit your downloaded kernelsource folder
 
 # Resources
 THREAD="$(grep -c ^processor /proc/cpuinfo)"
-KERNEL="Image.gz-dtb"
-DTBIMAGE="dtb"
+
 export ARCH=arm64
 export SUBARCH=arm64
 export CLANG_PATH=~/toolchains/Clang-11/bin/
@@ -20,7 +16,7 @@ export CXXFLAGS="$CXXFLAGS -fPIC"
 export LOCALVERSION=-NetHunter
 
 
-DEFCONFIG="cepheus_nethunter_defconfig"
+DEFCONFIG="cepheus_defconfig"
 
 # Paths
 KERNEL_DIR=`pwd`
@@ -53,8 +49,8 @@ ls -a
 rm -rf ~/MI9_Anykernel3_Nethunter/Image*
 rm -rf ~/MI9_Anykernel3_Nethunter/dtbo.img
 #rm -rf ~/out_kernel_asop/nethunter*
-cp -a ~/QK-AOSP-Cepheus/out-clang/arch/arm64/boot/Image.gz-dtb ~/MI9_Anykernel3_Nethunter
+cp -a ~/Quantic-Kernel-AOSP-Cepheus/out-clang/arch/arm64/boot/Image.gz-dtb ~/nethunter/MI9_Anykernel3_Nethunter
 
 cd ~/MI9_Anykernel3_Nethunter
 rm release/*.zip 2>/dev/null
-zip -r9 release/nethunter_asop_kernel_qk-1.4.zip * -x .git README.md *placeholder release/
+zip -r9 release/nethunter_asop_kernel.zip * -x .git README.md *placeholder release/
