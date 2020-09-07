@@ -20,8 +20,8 @@ DEFCONFIG="cepheus_defconfig"
 
 # Paths
 KERNEL_DIR=`pwd`
-ZIMAGE_DIR="${HOME}/QK-AOSP-Cepheus/out-clang/arch/arm64/boot/"
-zm="${HOME}/QK-AOSP-Cepheus/out-clang/modules_out/"
+ZIMAGE_DIR="${Home}/Quantic-Kernel-AOSP-Cepheus/out-clang/arch/arm64/boot/"
+zm="${HOME}/Quantic-Kernel-AOSP-Cepheus/out-clang/modules_out/"
 mkdir $zm
 
 DATE_START=$(date +"%s")
@@ -46,11 +46,11 @@ echo
 cd $ZIMAGE_DIR
 ls -a
 
-rm -rf ~/MI9_Anykernel3_Nethunter/Image*
-rm -rf ~/MI9_Anykernel3_Nethunter/dtbo.img
+rm -rf ~/nethunter/MI9_Anykernel3_Nethunter/Image*
+#rm -rf ~/MI9_Anykernel3_Nethunter/dtbo.img
 #rm -rf ~/out_kernel_asop/nethunter*
 cp -a ~/Quantic-Kernel-AOSP-Cepheus/out-clang/arch/arm64/boot/Image.gz-dtb ~/nethunter/MI9_Anykernel3_Nethunter
 
-cd ~/MI9_Anykernel3_Nethunter
+cd ~/nethunter/MI9_Anykernel3_Nethunter
 rm release/*.zip 2>/dev/null
 zip -r9 release/nethunter_asop_kernel.zip * -x .git README.md *placeholder release/
