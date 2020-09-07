@@ -10,7 +10,7 @@ export CLANG_PATH=~/toolchains/Clang-11/bin/
 export PATH=${CLANG_PATH}:${PATH}
 export CLANG_TRIPLE=aarch64-linux-gnu-
 export CROSS_COMPILE=${HOME}/toolchains/aarch64-linux-android-4.9/bin/aarch64-linux-android-
-export CROSS_COMPILE_ARM32=/home/daniel/toolchains/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
+export CROSS_COMPILE_ARM32=${HOME}/toolchains/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
 export CONFIG_CROSS_COMPILE_COMPAT_VDSO="arm-linux-gnueabihf-"
 export CXXFLAGS="$CXXFLAGS -fPIC"
 export LOCALVERSION=-NetHunter
@@ -20,7 +20,7 @@ DEFCONFIG="cepheus_defconfig"
 
 # Paths
 KERNEL_DIR=`pwd`
-ZIMAGE_DIR="${Home}/Quantic-Kernel-AOSP-Cepheus/out-clang/arch/arm64/boot/"
+ZIMAGE_DIR="${HOME}/Quantic-Kernel-AOSP-Cepheus/out-clang/arch/arm64/boot/"
 zm="${HOME}/Quantic-Kernel-AOSP-Cepheus/out-clang/modules_out/"
 mkdir $zm
 
