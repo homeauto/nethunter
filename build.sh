@@ -1,12 +1,21 @@
 #!/bin/bash
-cd ~/Quantic-Kernel-AOSP-Cepheus/ #change this to fit your downloaded kernelsource folder
+#cd ~/QK-MIUI-Cepheus-rebase/ #change this to fit your downloaded kernelsource folder
 
+
+# Paths
+KERNEL_DIR="${HOME}/QK-MIUI-Cepheus-rebase"
+ZIMAGE_DIR="$KERNEL_DIR/out-clang/arch/arm64/boot"
+KERNEL=Image.gz-dtb
+ANY_KERNEL="${HOME}/ktemp"
+#zm="${HOME}/Quantic-Kernel-AOSP-Cepheus/out-clang/modules_out/"
+#mkdir $zm
+cd $KERNEL_DIR
 # Resources
 THREAD="$(grep -c ^processor /proc/cpuinfo)"
-
 export ARCH=arm64
 export SUBARCH=arm64
-export CLANG_PATH=~/toolchains/Clang-11/bin/
+#export CLANG_PATH=~/toolchains/Clang-11/bin/
+export CLANG_PATH=~/toolchains/proton-clang/bin/
 export PATH=${CLANG_PATH}:${PATH}
 export CLANG_TRIPLE=aarch64-linux-gnu-
 export CROSS_COMPILE=${HOME}/toolchains/aarch64-linux-android-4.9/bin/aarch64-linux-android-
@@ -15,14 +24,7 @@ export CONFIG_CROSS_COMPILE_COMPAT_VDSO="arm-linux-gnueabihf-"
 export CXXFLAGS="$CXXFLAGS -fPIC"
 export LOCALVERSION=-NetHunter
 
-
 DEFCONFIG="cepheus_defconfig"
-
-# Paths
-KERNEL_DIR=`pwd`
-ZIMAGE_DIR="${HOME}/Quantic-Kernel-AOSP-Cepheus/out-clang/arch/arm64/boot/"
-zm="${HOME}/Quantic-Kernel-AOSP-Cepheus/out-clang/modules_out/"
-mkdir $zm
 
 DATE_START=$(date +"%s")
 
@@ -46,11 +48,15 @@ echo
 cd $ZIMAGE_DIR
 ls -a
 
-rm -rf ~/nethunter/MI9_Anykernel3_Nethunter/Image*
+rm -rf $ANY_KERNEL/$KERNEL
+#python3 mkdtboimg.py create out-clang/arch/arm64/boot/dtbo.img out-clang/arch/arm64/boot/dts/qcom/*.dtbo
+
+
 #rm -rf ~/MI9_Anykernel3_Nethunter/dtbo.img
 #rm -rf ~/out_kernel_asop/nethunter*
-cp -a ~/Quantic-Kernel-AOSP-Cepheus/out-clang/arch/arm64/boot/Image.gz-dtb ~/nethunter/MI9_Anykernel3_Nethunter
+cp -a $ZIMAGE_DIR/$KERNEL $ANY_KERNEL
 
-cd ~/nethunter/MI9_Anykernel3_Nethunter
+cd $ANY_KERNEL
+mkdir -p release
 rm release/*.zip 2>/dev/null
-zip -r9 release/nethunter_asop_kernel.zip * -x .git README.md *placeholder release/
+zip -r9 release/miuia.zip * -x .git README.md *placeholder release/
